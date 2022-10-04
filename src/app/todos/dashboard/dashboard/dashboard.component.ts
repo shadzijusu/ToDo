@@ -1,4 +1,4 @@
-import { map, Observable } from 'rxjs';
+import { combineLatest, map, Observable, switchMap, take } from 'rxjs';
 import { ToDo } from 'src/app/core/models/ToDo.model';
 import { ToDos } from 'src/app/core/models/ToDos.model';
 import { ToDoService } from 'src/app/core/services/ToDoService.service';
@@ -14,8 +14,14 @@ export class DashboardComponent implements OnInit {
   toDo$: Observable<ToDo[]>;
   constructor(private toDoService: ToDoService) {
     this.toDo$ = this.toDoService.getAllTodos().pipe(
-      map((todos) => todos.todos))
-   }
+      map((todos) => todos.todos),
+      map((todos) => {
+        todos.forEach((todo) => {
+          todo.title = "Title"
+        })
+        return todos;
+      })   
+       ) }
 
   ngOnInit(): void {
   }

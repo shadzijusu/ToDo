@@ -1,16 +1,62 @@
 <app-header></app-header>
-<div>
-  <!--Add new ToDo-->
+<div class="flex">
+  <aside class="w-64" aria-label="Sidebar">
+    <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="#"
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <home-icon></home-icon>
+            <span class="ml-3">Dashboard</span>
+          </a>
+        </li>
+      </ul>
+      <hr />
 
-  <!--Search-->
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="#"
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <search-icon></search-icon>
+            <span class="ml-3">Search</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="space-y-2">
+        <li>
+          <a
+            href="#"
+            class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <add-icon></add-icon>
+            <span class="ml-3">Add ToDo</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!--Add new ToDo-->
 
   <!--Dropdown for filtering-->
 
   <!--AllTodos-->
-  <ng-container *ngFor="let todo of toDo$ | async">
-    <div>
-      <h1>{{ todo.todo }}</h1>
-      <p>{{ todo.completed }}</p>
-    </div>
-  </ng-container>
+  <div class="grid grid-cols-2 ml-32">
+    <ng-container *ngFor="let todo of toDo$ | async">
+      <div
+        class="bg-slate-300 m-4 h-64 border-4 rounded-md border-grayishBlue hover:cursor-pointer hover:bg-grayishBlue"
+      >
+        <h1 class="text-2xl font-bold p-5">{{ todo.title }}</h1>
+        <p class="text-lg m-5">{{ todo.todo }}</p>
+        <p class="m-5 text-">
+          {{ todo.completed ? "Completed" : "Not completed" }}
+        </p>
+      </div>
+    </ng-container>
+  </div>
 </div>

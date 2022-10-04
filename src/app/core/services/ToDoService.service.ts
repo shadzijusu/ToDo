@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { ToDos } from '../models/ToDos.model';
@@ -9,9 +9,8 @@ import { ToDos } from '../models/ToDos.model';
 export class ToDoService {
     constructor(private http: HttpClient) { }
 
-
     getAllTodos() : Observable<ToDos> {
-        return this.http.get<ToDos>(`https://dummyjson.com/todos`);
+        return this.http.get<ToDos>(`https://dummyjson.com/todos?limit=4&skip=10`);
     }
     
 }
