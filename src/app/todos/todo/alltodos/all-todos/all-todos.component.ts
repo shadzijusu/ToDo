@@ -1,4 +1,4 @@
-import { from, map, Observable } from 'rxjs';
+import { from, map, Observable, startWith, Subject } from 'rxjs';
 import { ToDo } from 'src/app/core/models/ToDo.model';
 import { ToDoService } from 'src/app/core/services/ToDoService.service';
 
@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./all-todos.component.scss']
 })
 export class AllTodosComponent {
-
+  categories = ["Completed", "Not completed"]
+  selectedCategory = ""
   toDos: ToDo[];
+  originalToDos : ToDo[];
   constructor(private toDoService: ToDoService, private router:  Router) {
     this.toDos = JSON.parse(localStorage.getItem("todos") ||'[]') as ToDo[]
+    this.originalToDos = this.toDos;
     /*
     this.toDo$ = this.toDoService.getAllTodos().pipe(
       map((todos) => todos.todos),
@@ -27,6 +30,19 @@ export class AllTodosComponent {
        )
     */
     }
-
-
+   
+    onSelected(category: string) : void {
+      this.selectedCategory = category;
+      this.toDos = this.originalToDos
+      let completed = false
+      if(category != "0") {
+      if(category == "Completed") {
+        completed = true
+      }
+      this.toDos = this.toDos.filter((todo) => todo.completed == completed)
+      }
+      else {
+        this.toDos = this.originalToDos
+      }
+    }
 }

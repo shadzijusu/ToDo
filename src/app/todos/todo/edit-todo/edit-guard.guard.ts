@@ -1,9 +1,11 @@
 import { Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
+import {
+    ActivatedRouteSnapshot, CanDeactivate, Router, RouterStateSnapshot
+} from '@angular/router';
 
-import { AddNewTodoComponent } from '../add-new-todo/add-new-todo.component';
+import { EditTodoComponent } from './edit-todo.component';
 
 // Consider using this interface for all CanDeactivate guards,
 // and have your components implement this interface, too.
@@ -15,16 +17,19 @@ import { AddNewTodoComponent } from '../add-new-todo/add-new-todo.component';
 // }
 
 @Injectable({providedIn: 'root'})
-export class EditGuard implements CanDeactivate<AddNewTodoComponent> {
+export class EditGuard implements CanDeactivate<EditTodoComponent> {
+    constructor(private router: Router
+        ) {}
     canDeactivate(
-        component: AddNewTodoComponent,
+        component: EditTodoComponent,
         currentRoute: ActivatedRouteSnapshot, 
         currentState: RouterStateSnapshot
     ): Observable<boolean>|Promise<boolean>|boolean {
         if (component.todoForm.dirty) {
             const taskName = component.todoForm.get('title')?.value || 'New Task';
-            return confirm(`Navigate away and cancel creating Task: ${taskName}?`);
+            return confirm(`Navigate away and cancel editing Task: ${taskName}?`);
           }
+      
         return false;
     }
 }
