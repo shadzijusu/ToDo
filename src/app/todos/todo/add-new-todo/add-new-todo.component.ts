@@ -1,5 +1,7 @@
+import { debounceTime } from 'rxjs';
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 function getRandomInt(max: number) {
@@ -13,11 +15,13 @@ function getRandomInt(max: number) {
 })
 export class AddNewTodoComponent implements OnInit {
   todoForm : FormGroup;
+
   constructor(private formBuilder: FormBuilder, private router: Router) { 
     this.todoForm = this.formBuilder.group({
       title: ['', [Validators.required]],
-      todo: ['']
+      todo: ['', [Validators.required]]
     })
+ 
   }
   createTodo() {
     let existingTodos = JSON.parse(localStorage.getItem("todos") || '[]')
@@ -33,5 +37,5 @@ export class AddNewTodoComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
+ 
 }

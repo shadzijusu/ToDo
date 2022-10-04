@@ -10,6 +10,7 @@ import { DashboardComponent } from './todos/dashboard/dashboard/dashboard.compon
 import { HeaderComponent } from './todos/layout/header/header.component';
 import { AddNewTodoComponent } from './todos/todo/add-new-todo/add-new-todo.component';
 import { AllTodosComponent } from './todos/todo/alltodos/all-todos/all-todos.component';
+import { EditGuard } from './todos/todo/edit-todo/edit-guard.guard';
 import { EditTodoComponent } from './todos/todo/edit-todo/edit-todo.component';
 import { SearchComponent } from './todos/todo/search/search.component';
 import { StatsComponent } from './todos/todo/stats/stats.component';
