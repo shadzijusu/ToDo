@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        grayishBlue: 'var(--grayishBlue)'
+      }
+    },
   },
   plugins: [require('@tailwindcss/aspect-ratio')
 ,require('@tailwindcss/forms')

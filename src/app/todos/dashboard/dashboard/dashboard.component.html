@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div>
+  <!--Add new ToDo-->
+
+  <!--Search-->
+
+  <!--Dropdown for filtering-->
+
+  <!--AllTodos-->
+  <ng-container *ngFor="let todo of toDo$ | async">
+    <div>
+      <h1>{{ todo.todo }}</h1>
+      <p>{{ todo.completed }}</p>
+    </div>
+  </ng-container>
+</div>

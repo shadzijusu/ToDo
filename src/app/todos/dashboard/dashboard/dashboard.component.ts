@@ -14,8 +14,7 @@ export class DashboardComponent implements OnInit {
   toDo$: Observable<ToDo[]>;
   constructor(private toDoService: ToDoService) {
     this.toDo$ = this.toDoService.getAllTodos().pipe(
-      map((todos) => todos.todos)
-    );
+      map((todos) => todos.todos))
    }
 
   ngOnInit(): void {
