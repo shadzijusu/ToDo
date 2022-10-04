@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        grayishBlue: 'var(--grayishBlue)'
+        grayishBlue: 'var(--grayishBlue)',
+        orangeLight: 'var(--orangeLight)'
       }
     },
   },

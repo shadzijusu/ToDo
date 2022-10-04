@@ -6,7 +6,7 @@
         <li>
           <a
             href="#"
-            routerLink="dashboard"
+            routerLink="/dashboard"
             routerLinkActive="active"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
@@ -21,6 +21,7 @@
         <li>
           <a
             href="#"
+            routerLink="/search"
             routerLinkActive="active"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
@@ -35,6 +36,7 @@
           <a
             href="#"
             routerLinkActive="active"
+            routerLink="/add"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <add-icon></add-icon>
@@ -47,6 +49,7 @@
         <li>
           <a
             href="#"
+            routerLink="/stats"
             routerLinkActive="active"
             class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
@@ -57,19 +60,5 @@
       </ul>
     </div>
   </aside>
-
-  <!--AllTodos-->
-  <div class="grid grid-cols-2 ml-32">
-    <ng-container *ngFor="let todo of toDo$ | async">
-      <div
-        class="bg-grayishBlue m-4 h-64 border-4 rounded-md border-grayishBlue hover:cursor-pointer hover:bg-slate-300"
-      >
-        <h1 class="text-2xl font-bold p-5">{{ todo.title }}</h1>
-        <p class="text-lg m-5">{{ todo.todo }}</p>
-        <p class="m-5 text-">
-          {{ todo.completed ? "Completed" : "Not completed" }}
-        </p>
-      </div>
-    </ng-container>
-  </div>
+  <router-outlet></router-outlet>
 </div>

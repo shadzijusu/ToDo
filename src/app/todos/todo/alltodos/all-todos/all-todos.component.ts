@@ -1,19 +1,21 @@
-
-import { combineLatest, map, Observable, switchMap, take } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { ToDo } from 'src/app/core/models/ToDo.model';
 import { ToDoService } from 'src/app/core/services/ToDoService.service';
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-all-todos',
+  templateUrl: './all-todos.component.html',
+  styleUrls: ['./all-todos.component.scss']
 })
-export class DashboardComponent   {
-  toDo$: Observable<ToDo[]>;
+export class AllTodosComponent {
+
+  toDos: ToDo[];
   constructor(private toDoService: ToDoService, private router:  Router) {
+    this.toDos = JSON.parse(localStorage.getItem("todos") ||'[]') as ToDo[]
+    /*
     this.toDo$ = this.toDoService.getAllTodos().pipe(
       map((todos) => todos.todos),
       map((todos) => {
@@ -22,11 +24,9 @@ export class DashboardComponent   {
         })
         return todos;
       })   
-       ) }
+       )
+    */
+    }
 
-  
- openEditPage(todoId: number) {
- 
- }
 
 }

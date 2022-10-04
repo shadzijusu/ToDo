@@ -1,0 +1,23 @@
+<div class="bg-grayishBlue w-11/12 h-96 mt-12 ml-32">
+  <h1 class="text-xl font-bold m-8 p-6 text-center">Add new ToDo</h1>
+  <form [formGroup]="todoForm" class="flex flex-col">
+    <label for="title"></label>
+    <input
+      id="title"
+      class="m-6 mt-2 p-2 w-64"
+      placeholder="Title"
+      formControlName="title"
+    />
+    <textarea
+      class="w-64 ml-6"
+      placeholder="Task description.."
+      formControlName="todo"
+    ></textarea>
+    <button
+      (click)="createTodo()"
+      class="bg-orangeLight hover:bg-orange-200 text-white font-bold rounded w-28 m-5 ml-32 h-10"
+    >
+      Create
+    </button>
+  </form>
+</div>

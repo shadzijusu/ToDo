@@ -1,1 +1,24 @@
-<p>edit-todo works!</p>
+<div
+  class="bg-grayishBlue ml-48 mt-12 h-96 w-full border-4 rounded-md border-grayishBlue"
+>
+  <h1 class="text-2xl font-bold p-5">{{ todo?.title }}</h1>
+  <p class="text-lg m-5 mt-4">{{ todo?.todo }}</p>
+  <p class="m-5 text-">
+    {{ todo?.completed ? "Completed" : "Not completed" }}
+  </p>
+  <div class="mt-32 ml-64">
+    <button
+      *ngIf="!todo?.completed"
+      (click)="completeTask()"
+      class="bg-orangeLight hover:bg-orange-200 text-white font-bold rounded w-28 h-10"
+    >
+      Complete
+    </button>
+    <button
+      (click)="deleteTask()"
+      class="bg-orangeLight hover:bg-orange-200 text-white font-bold rounded w-28 m-5 h-10"
+    >
+      Delete
+    </button>
+  </div>
+</div>

@@ -3,5 +3,4 @@ export interface ToDo {
     title: string,
     todo: string,
     completed: boolean,
-    userId: number
 }
