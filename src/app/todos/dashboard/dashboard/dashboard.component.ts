@@ -4,6 +4,8 @@ import { ToDos } from 'src/app/core/models/ToDos.model';
 import { ToDoService } from 'src/app/core/services/ToDoService.service';
 
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +14,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   toDo$: Observable<ToDo[]>;
-  constructor(private toDoService: ToDoService) {
+  foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
+  selectedOption : string = ""
+  constructor(private toDoService: ToDoService, private router: Router) {
     this.toDo$ = this.toDoService.getAllTodos().pipe(
       map((todos) => todos.todos),
       map((todos) => {
@@ -25,5 +33,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+ 
 
 }
